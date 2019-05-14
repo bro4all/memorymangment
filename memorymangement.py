@@ -9,6 +9,18 @@ def readfile():
     return memory
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 class Job:
     def __init__(self, process_id, action, page):
         self.process_id = process_id
