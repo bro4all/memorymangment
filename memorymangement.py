@@ -9,17 +9,13 @@ def readfile():
     return memory
     #memory is an array that stores the PID, ACTION, and PAGE to take
 def fifo(memory):
-        page_map =[]
-        physical_table =[20]
-        virtual_table=[]
-
+        page_table=[[],[20]]
+        procces_table[page_table]
         for i in range(0, len(memory)):
-            if not physical_table :
-                physical_table.append() == memory[i].proccess_id
-
-            elif  memory[-1]:
-                vitual
-
+            page_table.append([1])==memory[:19:1].process_id
+            if page_table [[1][-1]]:
+                for i in range (20, len(memory)):
+                    page_table[0].append
 
 
 
@@ -49,3 +45,4 @@ class Job:
     def __repr__(self):
         return "process_id : {}, action: {},page: {}"\
             .format(self.process_id, self.action, self.page)
+fifo(memory)
