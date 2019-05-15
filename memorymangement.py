@@ -24,6 +24,15 @@ def fullPhysicalFIFO(x):
     #FIFO Handler if physical is full
     pass         
 
+def printPhysical(x):
+    for i in range (0, 20):
+        print(i, end="\t")
+        if(x[i] == None):
+            print("FREE")
+        else:
+            print("Process", end="\t")
+            print(x[i])
+
 def freePage(x):
     pass
 
@@ -46,8 +55,10 @@ class Job:
 
 if __name__== "__main__":
     memory = readfile()
-    physical = []
+    physical = [None] * 20
     activeProcess = []
+    count = 0
+    counter = 0
     for i in range (0, len(memory)):
         if(memory[i].action == 'C'):
             activeProcess.append(memory[i])
@@ -56,8 +67,10 @@ if __name__== "__main__":
             if(memory[j].process_id == activeProcess[i].process_id):
                 if(memory[j].action == 'A'):
                     activeProcess[i].virtual.append(memory[j].page)
-                    physical.append(memory[i].process_id)
-                    activeProcess[i].physical.append(len(physical) - 1)
+                    physical[count] = memory[j].process_id
+                    count = count + 1
+                    activeProcess[i].physical.append(len(physical) - 20 + counter)
+                    counter = counter + 1
                 if(memory[j].action == 'R'):
                     activeProcess[i].R = 1
                 if(memory[j].action == 'W'):
@@ -68,8 +81,9 @@ if __name__== "__main__":
                     terminateProcess(memory[i])
     
     for i in range (0, len(activeProcess)):
-            #printResult(memory[i])
             printResult(activeProcess[i])
+            
+    printPhysical(physical)
     '''
     memory = readfile()
     physical = []
